@@ -1,0 +1,320 @@
+Nature’s Hidden Hugs — Website v0 (3-page) Build Plan
+===================================================
+
+Goal
+----
+Ship a clean, “cozy + premium” interactive website TODAY as a v0 foundation:
+1) Home (explains the brand + funnels to stories)
+2) Storytelling (embedded YouTube videos in a browseable library)
+3) About (mission + what the page stands for)
+
+Constraints / Approach
+----------------------
+- Build from scratch using a Google IDE (e.g., Google Cloud Shell Editor / Project IDX).
+- Keep stack simple: HTML + CSS + vanilla JS.
+- Make it feel interactive: moving images, subtle page/section animations, button micro-interactions.
+- Mobile-first, responsive layout.
+
+Deliverables (What you will have when finished)
+-----------------------------------------------
+- 3 working pages with shared navigation and consistent styling
+- Storytelling page with YouTube embeds (data-driven list)
+- Animations:
+  - Hero background “moving image” effect
+  - Buttons: hover/press ripple or scale + glow
+  - Section fade/slide-in on scroll
+- A deployable static site folder you can host anywhere (GitHub Pages / Netlify / Firebase Hosting)
+
+Timebox: 2–3 Hours (Focused Sprint)
+-----------------------------------
+Hour 1: Scaffold + layout + navigation + basic styles
+Hour 2: Story library + embeds + scroll animations + polish
+Hour 3: Final UI polish + responsive testing + deployment
+
+===================================================
+1) Project Setup (10–15 min)
+===================================================
+
+1. Create a folder:
+   natures-hidden-hugs-site/
+
+2. Create this structure:
+   natures-hidden-hugs-site/
+   ├─ index.html           (Home)
+   ├─ stories.html         (Storytelling)
+   ├─ about.html           (About)
+   ├─ assets/
+   │  ├─ img/              (logos, hero images, placeholders)
+   │  └─ icons/            (optional)
+   ├─ css/
+   │  └─ styles.css
+   └─ js/
+      └─ main.js
+
+3. Add a placeholder hero image (optional but recommended):
+   assets/img/hero.jpg
+   (If you don’t have one yet, use any calm nature image temporarily.)
+
+===================================================
+2) Global Design Spec (Keep it Cohesive)
+===================================================
+
+Brand Feel
+----------
+- “Warm, wholesome, cinematic-documentary but modern web.”
+- Soft gradients, gentle motion, plenty of breathing room.
+- Emphasis on emotional storytelling + clear CTAs.
+
+Layout Rules
+------------
+- Max content width: 1100–1200px
+- Consistent vertical spacing: 24px / 40px / 64px
+- Buttons: rounded, tactile hover states
+- Cards: soft shadow, subtle border, hover lift
+
+Core Sections Shared Across Pages
+---------------------------------
+- Top Nav: Logo/Title + Links (Home / Stories / About)
+- Footer: mission line + socials + copyright
+
+===================================================
+3) Page Skeletons (HTML)
+===================================================
+
+A) Home (index.html)
+--------------------
+Sections (in order):
+1. Hero
+   - Brand title: “Nature’s Hidden Hugs”
+   - Subtext: “Wholesome rescue stories that make people feel again.”
+   - Primary CTA: “Watch the Stories” (links to stories.html)
+   - Secondary CTA: “Our Mission” (links to about.html)
+   - Motion: hero image parallax / slow pan / animated gradient overlay
+
+2. “What This Is” (3 columns / cards)
+   - Rescue stories (YouTube)
+   - Community engagement (FB page)
+   - Support the mission (future shop/donations)
+
+3. Featured Stories (3–6 story cards)
+   - Title + 1–2 sentence teaser + “Watch” button
+   - Clicking takes you to stories.html#story-id (optional)
+
+4. Call-to-Action Banner
+   - “Join the journey” + button to Stories
+   - Secondary: “Follow on Facebook” (placeholder link)
+
+B) Storytelling (stories.html)
+------------------------------
+Sections:
+1. Header
+   - Title: “Story Library”
+   - Short line: “Every video is a chapter.”
+
+2. Filters (simple v0)
+   - Search input (filters by title)
+   - Optional tags later (cats, wolves, foxes, etc.)
+
+3. Story Grid (cards)
+   Each card includes:
+   - Thumbnail area (either YouTube thumbnail or placeholder image)
+   - Title + short description
+   - “Watch” button (opens embedded player section or expands in card)
+
+4. Embedded Player Behavior (choose ONE for v0)
+   Option 1 (fastest): Each card includes an iframe embed directly.
+   Option 2 (cleaner): Click “Watch” -> opens a modal overlay with iframe.
+   (Recommend Option 2 for a premium feel.)
+
+C) About (about.html)
+---------------------
+Sections:
+1. Hero-lite
+   - Mission statement
+   - Emotional promise (“A safe corner of the internet…”)
+
+2. Why It Exists
+   - A few paragraphs that explain the purpose and vibe
+
+3. What You’ll Find Here
+   - Stories, hope, community
+
+4. “How You Can Support”
+   - CTA to watch stories
+   - Future: shop/donate/email list
+
+===================================================
+4) Motion + Interactivity Spec (CSS + JS)
+===================================================
+
+A) Moving Images (Hero Motion)
+------------------------------
+Use ONE of these (simple + effective):
+1) “Ken Burns” slow pan/zoom effect:
+   - CSS keyframes on the hero background image: slight scale + translate
+2) Parallax feel:
+   - On scroll, adjust background-position or translate a hero image layer
+   (v0: Ken Burns is easiest & stable.)
+
+B) Button Animations
+--------------------
+- Hover: slight lift (translateY -2px) + brighter shadow
+- Press: scale down slightly
+- Optional ripple effect: JS-driven span element inside button on click
+
+C) Section Reveal on Scroll
+---------------------------
+- Use IntersectionObserver:
+  - Elements start with opacity 0 + translateY(10–16px)
+  - On entering viewport: transition to opacity 1 + translateY(0)
+
+D) Page Transitions (Optional v0+)
+----------------------------------
+- Simple fade-in on body load
+- Avoid heavy SPA complexity for v0
+
+===================================================
+5) Implementation Steps (Order Matters)
+===================================================
+
+Step 1 — Build the shared layout (20–30 min)
+--------------------------------------------
+- Create nav + footer once, paste into all pages
+- Add CSS for typography, spacing, container width
+- Confirm links between pages work
+
+Step 2 — Home page sections (20–30 min)
+---------------------------------------
+- Hero layout + CTAs
+- Add 3 feature cards section
+- Add featured stories cards (dummy content first)
+
+Step 3 — Story library (30–45 min)
+----------------------------------
+- Create a JS array of stories:
+  - title, description, youtubeId
+- Render cards via JS into the grid
+- Implement modal player OR inline iframe
+
+Step 4 — About page content (15–25 min)
+---------------------------------------
+- Write mission copy (placeholder first)
+- Add support CTA block
+
+Step 5 — Add animations (20–35 min)
+-----------------------------------
+- Add hero motion (Ken Burns)
+- Add button hover + press
+- Add scroll reveal
+- Confirm animations are subtle and smooth on mobile
+
+Step 6 — Responsive pass + polish (20–30 min)
+---------------------------------------------
+- Test on narrow widths
+- Ensure nav collapses or wraps nicely
+- Ensure story grid becomes 1 column on mobile
+- Check tap targets for buttons
+
+===================================================
+6) Suggested Minimal Code Patterns (No Frameworks)
+===================================================
+
+A) Story Data Format (JS)
+-------------------------
+stories = [
+  {
+    id: "kitten-walks-to-camera",
+    title: "A Tiny Stranger Walks Closer",
+    desc: "A curious kitten takes brave steps toward the camera.",
+    youtubeId: "YOUR_YOUTUBE_ID"
+  },
+  ...
+]
+
+B) YouTube Embed URL
+--------------------
+https://www.youtube-nocookie.com/embed/YOUTUBE_ID
+
+C) Modal Player (Recommended v0)
+--------------------------------
+- Hidden modal div in stories.html
+- On card button click:
+  - set iframe src to embed URL
+  - open modal
+- On close:
+  - clear iframe src to stop playback
+
+===================================================
+7) Content Checklist (What you need from yourself)
+===================================================
+
+Home Page
+---------
+- 1–2 sentence elevator pitch
+- 3 short bullet benefits (Stories / Community / Support)
+- 3–6 featured story titles + 1 line teasers
+- Facebook page link
+
+Stories Page
+------------
+- List of YouTube video IDs (or full URLs)
+- Titles and 1–2 line descriptions
+- Optional: tags (cats/wolves/foxes etc.) later
+
+About Page
+----------
+- Mission statement (2–5 paragraphs)
+- A short “why it matters” section
+- A “how you can support” section
+
+===================================================
+8) Deployment Options (Pick One)
+===================================================
+
+Option A: GitHub Pages (simple)
+- Push folder to GitHub repo
+- Settings → Pages → Deploy from main branch
+
+Option B: Netlify (fastest)
+- Drag-and-drop folder into Netlify dashboard
+- Instant URL
+
+Option C: Firebase Hosting (Google-native)
+- firebase init hosting
+- firebase deploy
+
+===================================================
+9) v0 Acceptance Criteria (So you know it’s “done”)
+===================================================
+
+Must-have
+---------
+[ ] All 3 pages load and link correctly
+[ ] Nav + footer consistent everywhere
+[ ] Story library renders from JS data
+[ ] YouTube videos play in modal or inline
+[ ] Basic animations: hero motion + buttons + scroll reveal
+[ ] Looks good on mobile and desktop
+
+Nice-to-have (if time remains)
+------------------------------
+[ ] Search filter input on stories page
+[ ] YouTube thumbnail auto-load (img src with youtubeId)
+[ ] Light/Dark toggle (brand-safe)
+[ ] “Back to top” floating button
+[ ] Simple performance optimizations (lazy-load iframes)
+
+===================================================
+10) Next Iteration (After v0 ships)
+===================================================
+
+Phase 2 Features (Sales + Growth)
+---------------------------------
+- Email capture (“Get new stories weekly”)
+- Shop (merch) / donations
+- “Adoption-style quiz” funnel
+- Story pages as individual URL routes (SEO)
+- Analytics (GA4 / Plausible)
+- Facebook pixel (when you’re ready)
+
+End of Plan

@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Heartwarming rescue stories from around the internet. Curated stories of kindness and compassion towards animals.">
+    <title>Rescue Feed — Nature's Hidden Hugs</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐾</text></svg>">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <span>🐾</span> Nature's Hidden Hugs
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="stories.html" class="nav-link">Stories</a></li>
+                <li><a href="rescues.html" class="nav-link active">Rescue Feed</a></li>
+                <li><a href="soundtrack.html" class="nav-link">Soundtrack</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+            </ul>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header rescue-header">
+        <div class="container">
+            <div class="rescue-header-content">
+                <span class="rescue-icon">🌍</span>
+                <h1>Rescue Feed</h1>
+                <p>Heartwarming rescue stories from around the internet. <br>These are real moments of kindness that
+                    inspire us all.</p>
+            </div>
+            <div class="filter-tags" id="filter-tags">
+                <button class="pill-tag active" data-filter="all">All Stories</button>
+                <button class="pill-tag pill-tag--rescue" data-filter="rescue">Rescue</button>
+                <button class="pill-tag pill-tag--wildlife" data-filter="wildlife">Wildlife</button>
+                <button class="pill-tag" data-filter="shelter">Shelter</button>
+                <button class="pill-tag" data-filter="marine">Marine</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Rescue Stories Grid -->
+    <section class="section">
+        <div class="container">
+            <div class="rescue-grid reveal-stagger" id="rescue-grid">
+                <!-- Stories rendered via JS -->
+            </div>
+            <p id="no-results"
+                style="display: none; text-align: center; color: var(--color-gray); padding: var(--space-2xl);">
+                No rescue stories found for this category. Check back soon!
+            </p>
+        </div>
+    </section>
+
+    <!-- Submit Story CTA -->
+    <section class="cta-banner">
+        <div class="container reveal">
+            <h2>Know a Heartwarming Rescue Story?</h2>
+            <p>Help us grow this collection! Share links to inspiring rescue stories you've found online.</p>
+            <a href="mailto:rescues@natureshiddenhugs.com?subject=Rescue Story Submission" class="btn btn-primary">
+                Submit a Story
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>🐾 Nature's Hidden Hugs</h3>
+                    <p>Wholesome rescue stories that make people feel again. Kindness to all people and species. 🌿❤️
+                    </p>
+                </div>
+                <div class="footer-links">
+                    <h4>Explore</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="stories.html">Stories</a></li>
+                        <li><a href="rescues.html">Rescue Feed</a></li>
+                        <li><a href="soundtrack.html">Soundtrack</a></li>
+                        <li><a href="about.html">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Connect</h4>
+                    <ul>
+                        <li><a href="https://www.youtube.com/@Natureshiddenhugs" target="_blank"
+                                rel="noopener">YouTube</a></li>
+                        <li><a href="https://www.facebook.com/profile.php?id=61585668806088" target="_blank"
+                                rel="noopener">Facebook</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 Nature's Hidden Hugs. Made with ❤️ for animals everywhere.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Rescue stories data - curated from around the internet
+        const rescueStories = [
+            {
+                id: "hope-for-paws-highway",
+                title: "Dog Rescued from Busy Highway After Being Hit by Car",
+                source: "Hope For Paws",
+                sourceUrl: "https://www.hopeforpaws.org",
+                thumbnail: "https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=600&h=400&fit=crop",
+                excerpt: "Volunteers risked their lives to save an injured dog stranded on a busy highway. After weeks of rehabilitation, she found her forever home.",
+                category: "rescue",
+                date: "2026-02-01"
+            },
+            {
+                id: "sea-turtle-release",
+                title: "Rehabilitated Sea Turtle Released Back to Ocean",
+                source: "Sea Turtle Conservancy",
+                sourceUrl: "https://conserveturtles.org",
+                thumbnail: "https://images.unsplash.com/photo-1591025207163-942350e47db2?w=600&h=400&fit=crop",
+                excerpt: "After 6 months of care following a boat strike injury, this loggerhead sea turtle was released back into the Atlantic Ocean.",
+                category: "marine",
+                date: "2026-01-28"
+            },
+            {
+                id: "shelter-adoption-day",
+                title: "Local Shelter Achieves 100% Adoption Weekend",
+                source: "ASPCA",
+                sourceUrl: "https://www.aspca.org",
+                thumbnail: "https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=600&h=400&fit=crop",
+                excerpt: "Community came together for an adoption event that found loving homes for every single animal at the shelter.",
+                category: "shelter",
+                date: "2026-01-25"
+            },
+            {
+                id: "baby-elephant-rescue",
+                title: "Orphaned Baby Elephant Joins Sanctuary Family",
+                source: "David Sheldrick Wildlife Trust",
+                sourceUrl: "https://www.sheldrickwildlifetrust.org",
+                thumbnail: "https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?w=600&h=400&fit=crop",
+                excerpt: "A 3-month-old elephant orphaned by poachers has been welcomed into an elephant sanctuary where keepers will raise her until she's ready to rejoin the wild.",
+                category: "wildlife",
+                date: "2026-01-20"
+            },
+            {
+                id: "stray-cat-colony",
+                title: "TNR Program Saves Entire Feral Cat Colony",
+                source: "Alley Cat Allies",
+                sourceUrl: "https://www.alleycat.org",
+                thumbnail: "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=600&h=400&fit=crop",
+                excerpt: "Volunteers trapped, neutered, and returned 47 feral cats, ensuring the colony's health while preventing overpopulation.",
+                category: "rescue",
+                date: "2026-01-15"
+            },
+            {
+                id: "dolphin-stranding",
+                title: "Stranded Dolphins Guided Back to Deep Water",
+                source: "NOAA Fisheries",
+                sourceUrl: "https://www.fisheries.noaa.gov",
+                thumbnail: "https://images.unsplash.com/photo-1607153333879-c174d265f1d2?w=600&h=400&fit=crop",
+                excerpt: "Quick-thinking beachgoers and marine rescue teams worked together to save a pod of dolphins that became stranded in shallow waters.",
+                category: "marine",
+                date: "2026-01-10"
+            },
+            {
+                id: "senior-dog-adoption",
+                title: "12-Year-Old Shelter Dog Finally Finds Forever Home",
+                source: "Old Friends Senior Dog Sanctuary",
+                sourceUrl: "https://ofsds.org",
+                thumbnail: "https://images.unsplash.com/photo-1518717758536-85ae29035b6d?w=600&h=400&fit=crop",
+                excerpt: "After 3 years in the shelter, a senior dog named Benny captured hearts online and was adopted by a loving family.",
+                category: "shelter",
+                date: "2026-01-05"
+            },
+            {
+                id: "owl-release",
+                title: "Injured Owl Flies Free After Surgery",
+                source: "Wildlife Rehabilitation Center",
+                sourceUrl: "https://example.com",
+                thumbnail: "https://images.unsplash.com/photo-1543549790-8b5f4a028cfb?w=600&h=400&fit=crop",
+                excerpt: "A great horned owl recovered from a wing injury and was released back into the wild after 2 months of rehabilitation.",
+                category: "wildlife",
+                date: "2025-12-28"
+            }
+        ];
+
+        // Create rescue story card
+        function createRescueCard(story) {
+            const card = document.createElement('article');
+            card.className = 'rescue-card reveal';
+            card.dataset.category = story.category;
+
+            const formattedDate = new Date(story.date).toLocaleDateString('en-US', {
+                month: 'short',
+                day: 'numeric',
+                year: 'numeric'
+            });
+
+            card.innerHTML = `
+                <div class="rescue-card-image">
+                    <img src="${story.thumbnail}" alt="${story.title}" loading="lazy">
+                    <span class="rescue-card-category pill-tag pill-tag--${story.category}">${story.category}</span>
+                </div>
+                <div class="rescue-card-body">
+                    <div class="rescue-card-meta">
+                        <span class="rescue-card-source">${story.source}</span>
+                        <span class="rescue-card-date">${formattedDate}</span>
+                    </div>
+                    <h3 class="rescue-card-title">${story.title}</h3>
+                    <p class="rescue-card-excerpt">${story.excerpt}</p>
+                    <a href="${story.sourceUrl}" target="_blank" rel="noopener" class="btn btn-secondary rescue-card-link">
+                        Read Full Story →
+                    </a>
+                </div>
+            `;
+
+            return card;
+        }
+
+        // Render rescue stories
+        function renderRescueStories(filter = 'all') {
+            const grid = document.getElementById('rescue-grid');
+            const noResults = document.getElementById('no-results');
+
+            const filtered = filter === 'all'
+                ? rescueStories
+                : rescueStories.filter(s => s.category === filter);
+
+            grid.innerHTML = '';
+
+            if (filtered.length === 0) {
+                noResults.style.display = 'block';
+            } else {
+                noResults.style.display = 'none';
+                filtered.forEach(story => {
+                    grid.appendChild(createRescueCard(story));
+                });
+                // Trigger scroll reveal
+                if (typeof initScrollReveal === 'function') {
+                    initScrollReveal();
+                }
+            }
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function () {
+            // Render all stories initially
+            renderRescueStories();
+
+            // Filter functionality
+            const filterTags = document.querySelectorAll('#filter-tags .pill-tag');
+            filterTags.forEach(tag => {
+                tag.addEventListener('click', function () {
+                    // Update active state
+                    filterTags.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+
+                    // Filter stories
+                    const filter = this.dataset.filter;
+                    renderRescueStories(filter);
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

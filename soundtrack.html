@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Listen to the soothing soundtracks of Nature's Hidden Hugs. Music that heals and inspires.">
+    <title>Soundtrack — Nature's Hidden Hugs</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎵</text></svg>">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <span>🐾</span> Nature's Hidden Hugs
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="stories.html" class="nav-link">Stories</a></li>
+                <li><a href="rescues.html" class="nav-link">Rescue Feed</a></li>
+                <li><a href="soundtrack.html" class="nav-link active">Soundtrack</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+            </ul>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header"
+        style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1920&h=800&fit=crop');">
+        <div class="container">
+            <h1>Nature's Melodies</h1>
+            <p>Music that speaks when words fail.</p>
+        </div>
+    </header>
+
+    <!-- Soundtrack Grid -->
+    <section class="section">
+        <div class="container">
+            <div class="story-grid reveal-stagger" id="soundtrack-grid">
+                <!-- Soundtracks rendered via JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Modal -->
+    <div class="modal-overlay" id="video-modal">
+        <div class="modal-content">
+            <button class="modal-close" id="modal-close">✕</button>
+            <iframe id="video-iframe" src=""
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" playsinline
+                allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>🐾 Nature's Hidden Hugs</h3>
+                    <p>Wholesome rescue stories that make people feel again. Kindness to all people and species. 🌿❤️
+                    </p>
+                </div>
+                <div class="footer-links">
+                    <h4>Explore</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="stories.html">Stories</a></li>
+                        <li><a href="rescues.html">Rescue Feed</a></li>
+                        <li><a href="soundtrack.html">Soundtrack</a></li>
+                        <li><a href="about.html">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Connect</h4>
+                    <ul>
+                        <li><a href="https://www.youtube.com/@Natureshiddenhugs" target="_blank"
+                                rel="noopener">YouTube</a></li>
+                        <li><a href="https://www.facebook.com/profile.php?id=61585668806088" target="_blank"
+                                rel="noopener">Facebook</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 Nature's Hidden Hugs. Made with ❤️ for animals everywhere.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Initialize soundtrack page
+        document.addEventListener('DOMContentLoaded', function () {
+            const soundtrackGrid = document.getElementById('soundtrack-grid');
+
+            // Render soundtracks
+            if (typeof soundtracks !== 'undefined' && soundtrackGrid) {
+                soundtrackGrid.innerHTML = '';
+                soundtracks.forEach(track => {
+                    const card = createStoryCard(track);
+                    // Ensure the button says "Listen" or similar if we wanted, 
+                    // but createStoryCard defaults to "Watch Story" which is fine for video.
+                    soundtrackGrid.appendChild(card);
+                });
+                // Re-run reveal animations
+                initScrollReveal();
+            }
+        });
+    </script>
+</body>
+
+</html>

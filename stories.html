@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Watch heart-warming animal rescue stories from Nature's Hidden Hugs. Every video is a chapter in our journey of kindness.">
+    <title>Story Library — Nature's Hidden Hugs</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐾</text></svg>">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <span>🐾</span> Nature's Hidden Hugs
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="stories.html" class="nav-link active">Stories</a></li>
+                <li><a href="rescues.html" class="nav-link">Rescue Feed</a></li>
+                <li><a href="soundtrack.html" class="nav-link">Soundtrack</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+            </ul>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="container">
+            <h1>Story Library</h1>
+            <p>Every video is a chapter. Every moment, a memory.</p>
+            <div class="search-container">
+                <input type="text" class="search-input" id="search-input" placeholder="Search stories...">
+            </div>
+        </div>
+    </header>
+
+    <!-- Story Grid -->
+    <section class="section">
+        <div class="container">
+            <div class="story-grid reveal-stagger" id="story-grid">
+                <!-- Stories rendered via JS -->
+            </div>
+            <p id="no-results"
+                style="display: none; text-align: center; color: var(--color-gray); padding: var(--space-2xl);">
+                No stories found matching your search. Try a different term.
+            </p>
+        </div>
+    </section>
+
+    <!-- Video Modal -->
+    <div class="modal-overlay" id="video-modal">
+        <div class="modal-content">
+            <button class="modal-close" id="modal-close">✕</button>
+            <iframe id="video-iframe" src=""
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>🐾 Nature's Hidden Hugs</h3>
+                    <p>Wholesome rescue stories that make people feel again. Kindness to all people and species. 🌿❤️
+                    </p>
+                </div>
+                <div class="footer-links">
+                    <h4>Explore</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="stories.html">Stories</a></li>
+                        <li><a href="rescues.html">Rescue Feed</a></li>
+                        <li><a href="soundtrack.html">Soundtrack</a></li>
+                        <li><a href="about.html">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Connect</h4>
+                    <ul>
+                        <li><a href="https://www.youtube.com/@Natureshiddenhugs" target="_blank"
+                                rel="noopener">YouTube</a></li>
+                        <li><a href="https://www.facebook.com/profile.php?id=61585668806088" target="_blank"
+                                rel="noopener">Facebook</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 Nature's Hidden Hugs. Made with ❤️ for animals everywhere.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Initialize stories page
+        document.addEventListener('DOMContentLoaded', function () {
+            const storyGrid = document.getElementById('story-grid');
+            const searchInput = document.getElementById('search-input');
+            const noResults = document.getElementById('no-results');
+
+            // Render all stories
+            function renderStories(storiesToRender) {
+                storyGrid.innerHTML = '';
+                if (storiesToRender.length === 0) {
+                    noResults.style.display = 'block';
+                } else {
+                    noResults.style.display = 'none';
+                    storiesToRender.forEach(story => {
+                        storyGrid.appendChild(createStoryCard(story));
+                    });
+                    // Re-run reveal animations
+                    initScrollReveal();
+                }
+            }
+
+            // Initial render
+            if (typeof stories !== 'undefined') {
+                renderStories(stories);
+            }
+
+            // Search functionality
+            searchInput.addEventListener('input', function (e) {
+                const query = e.target.value.toLowerCase().trim();
+                if (query === '') {
+                    renderStories(stories);
+                } else {
+                    const filtered = stories.filter(story =>
+                        story.title.toLowerCase().includes(query) ||
+                        story.desc.toLowerCase().includes(query)
+                    );
+                    renderStories(filtered);
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
