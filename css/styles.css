@@ -2,8 +2,8 @@
    Nature's Hidden Hugs — Design System
    ========================================== */
 
-/* Google Fonts - Serif + Sans-Serif Pairing */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap');
+/* Google Fonts - Apple-inspired Clean Typography */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 /* ==========================================
    CSS Variables — Brand Colors & Spacing
@@ -33,9 +33,9 @@
   --gradient-card: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(45, 90, 61, 0.05) 100%);
   --gradient-cta: linear-gradient(135deg, var(--color-orange) 0%, var(--color-orange-soft) 100%);
 
-  /* Typography */
-  --font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-family-serif: 'Playfair Display', Georgia, serif;
+  /* Typography - Apple-inspired */
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-family-serif: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-size-xs: 0.75rem;
   --font-size-sm: 0.875rem;
   --font-size-base: 1rem;
@@ -69,10 +69,11 @@
   --shadow-glow: 0 0 20px rgba(224, 123, 57, 0.3);
   --shadow-lime-glow: 0 0 20px rgba(228, 255, 122, 0.3);
 
-  /* Transitions */
-  --transition-fast: 150ms ease;
-  --transition-base: 250ms ease;
-  --transition-slow: 400ms ease;
+  /* Transitions - Apple-style smooth */
+  --transition-fast: 200ms cubic-bezier(0.25, 0.1, 0.25, 1);
+  --transition-base: 350ms cubic-bezier(0.25, 0.1, 0.25, 1);
+  --transition-slow: 500ms cubic-bezier(0.25, 0.1, 0.25, 1);
+  --transition-spring: 600ms cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 /* ==========================================
@@ -771,12 +772,13 @@ p {
 }
 
 /* ==========================================
-   Scroll Reveal Animations
+   Scroll Reveal Animations — Apple-style
    ========================================== */
 .reveal {
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.25, 0.1, 0.25, 1),
+    transform 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
 .reveal.active {
@@ -784,11 +786,12 @@ p {
   transform: translateY(0);
 }
 
-/* Stagger children */
+/* Stagger children — cascading fade */
 .reveal-stagger>* {
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  transform: translateY(30px);
+  transition: opacity 0.6s cubic-bezier(0.25, 0.1, 0.25, 1),
+    transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
 .reveal-stagger.active>*:nth-child(1) {
@@ -2200,4 +2203,196 @@ p {
 .page-header h1 {
   color: #FFFFFF !important;
   text-shadow: 0 4px 8px rgba(0, 0, 0, 0.6) !important;
+}
+
+/* ==========================================
+   Shop Page Styles
+   ========================================== */
+.shop-header {
+  text-align: center;
+  padding-top: calc(70px + var(--space-4xl));
+  padding-bottom: var(--space-3xl);
+}
+
+.shop-badge {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  padding: var(--space-xs) var(--space-md);
+  border-radius: var(--border-radius-full);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  margin-bottom: var(--space-lg);
+  color: #FFFFFF;
+}
+
+.shop-section {
+  padding: var(--space-4xl) 0;
+}
+
+.shop-digital {
+  background: var(--color-white);
+}
+
+.section-title {
+  text-align: center;
+  font-size: var(--font-size-3xl);
+  font-weight: 600;
+  margin-bottom: var(--space-md);
+  color: var(--color-forest-dark);
+}
+
+.section-subtitle {
+  text-align: center;
+  color: var(--color-gray);
+  font-size: var(--font-size-lg);
+  margin-bottom: var(--space-3xl);
+}
+
+/* Product Grid */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--space-xl);
+}
+
+/* Product Card — Apple-style */
+.product-card {
+  background: var(--color-white);
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+  position: relative;
+}
+
+.product-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+}
+
+.product-card--digital {
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+}
+
+.product-card--featured {
+  border: 2px solid var(--color-forest);
+}
+
+.product-image {
+  position: relative;
+  aspect-ratio: 1;
+  overflow: hidden;
+  background: var(--color-gray-light);
+}
+
+.product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.product-card:hover .product-image img {
+  transform: scale(1.05);
+}
+
+.product-badge {
+  position: absolute;
+  top: var(--space-md);
+  left: var(--space-md);
+  background: var(--color-orange);
+  color: white;
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--border-radius-full);
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.product-badge--digital {
+  background: var(--color-forest);
+}
+
+.product-badge--value {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+}
+
+.product-info {
+  padding: var(--space-lg);
+}
+
+.product-title {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  color: var(--color-dark);
+  margin-bottom: var(--space-xs);
+}
+
+.product-desc {
+  font-size: var(--font-size-sm);
+  color: var(--color-gray);
+  margin-bottom: var(--space-md);
+  line-height: 1.5;
+}
+
+.product-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.product-price {
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  color: var(--color-forest-dark);
+}
+
+.btn-sm {
+  padding: var(--space-xs) var(--space-md);
+  font-size: var(--font-size-sm);
+}
+
+/* Trust Section */
+.trust-section {
+  padding: var(--space-2xl) 0;
+  background: var(--color-forest-dark);
+}
+
+.trust-grid {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-3xl);
+  flex-wrap: wrap;
+}
+
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  color: var(--color-white);
+}
+
+.trust-icon {
+  font-size: 1.5rem;
+}
+
+.trust-text {
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+/* Responsive Shop */
+@media (max-width: 768px) {
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .trust-grid {
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-lg);
+  }
 }
