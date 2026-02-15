@@ -126,6 +126,7 @@
       <p>Follow along for new stories every week. Together, we celebrate the quiet heroes and the animals they help.</p>
       <div style="display: flex; gap: var(--space-md); justify-content: center; flex-wrap: wrap;">
         <a href="stories.html" class="btn btn-primary">Watch Stories</a>
+        <a href="shop.html" class="btn btn-primary" style="background: var(--color-white); color: var(--color-forest-dark);">🛍️ Visit the Shop</a>
         <a href="https://www.facebook.com/profile.php?id=61585668806088" target="_blank" rel="noopener"
           class="btn btn-secondary" style="border-color: white; color: white;">Follow on Facebook</a>
       </div>
@@ -137,6 +138,11 @@
     <div class="container">
       <h2>🌿 Get New Stories First</h2>
       <p>Join the community and receive our latest heartwarming videos before anyone else.</p>
+      <div class="newsletter-benefits" style="display: flex; gap: var(--space-xl); justify-content: center; margin-bottom: var(--space-lg); flex-wrap: wrap;">
+        <span style="color: var(--color-white); font-size: var(--font-size-sm);">✨ Early access to new videos</span>
+        <span style="color: var(--color-white); font-size: var(--font-size-sm);">🎁 Exclusive shop discounts</span>
+        <span style="color: var(--color-white); font-size: var(--font-size-sm);">📖 Behind-the-scenes stories</span>
+      </div>
       <form class="newsletter-form">
         <input type="email" placeholder="Enter your email" required>
         <button type="submit">Subscribe</button>
@@ -158,6 +164,9 @@
           <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="stories.html">Stories</a></li>
+            <li><a href="rescues.html">Rescue Feed</a></li>
+            <li><a href="soundtrack.html">Soundtrack</a></li>
+            <li><a href="shop.html">Shop</a></li>
             <li><a href="about.html">About</a></li>
           </ul>
         </div>
@@ -178,18 +187,17 @@
 
   <script src="js/main.js"></script>
   <script>
-    // Load featured stories on home page
+    // Load featured stories on home page — use main stories array for a full grid
     document.addEventListener('DOMContentLoaded', function () {
       const featuredContainer = document.getElementById('featured-stories');
-      if (featuredContainer && typeof shorts !== 'undefined') {
-        // Show first 6 shorts
-        if (shorts.length > 0) {
-          const featured = shorts.slice(0, 6);
+      if (featuredContainer && typeof stories !== 'undefined') {
+        if (stories.length > 0) {
+          const featured = stories.slice(0, 6);
           featured.forEach(story => {
             featuredContainer.appendChild(createStoryCard(story));
           });
         } else {
-          featuredContainer.innerHTML = '<p class="text-center text-muted col-12">No shorts available at the moment. Check back soon!</p>';
+          featuredContainer.innerHTML = '<p class="text-center text-muted col-12">New stories coming soon — check back!</p>';
         }
       }
     });

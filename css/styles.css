@@ -432,6 +432,11 @@ p {
 .feature-card {
   text-align: center;
   padding: var(--space-2xl) var(--space-lg);
+  transition: transform var(--transition-base), box-shadow var(--transition-base), background var(--transition-base);
+}
+
+.feature-card:hover {
+  background: linear-gradient(135deg, rgba(45, 90, 61, 0.03) 0%, rgba(45, 90, 61, 0.08) 100%);
 }
 
 .feature-card .icon {
@@ -444,6 +449,12 @@ p {
   align-items: center;
   justify-content: center;
   font-size: 1.75rem;
+  transition: transform var(--transition-spring), box-shadow var(--transition-base);
+}
+
+.feature-card:hover .icon {
+  transform: scale(1.15) rotate(-5deg);
+  box-shadow: 0 8px 25px rgba(45, 90, 61, 0.25);
 }
 
 /* ==========================================
@@ -889,8 +900,9 @@ p {
 
 .content-section p {
   font-size: var(--font-size-lg);
-  color: var(--color-gray);
+  color: #374151;
   max-width: 700px;
+  line-height: 1.8;
 }
 
 .content-section.text-center p {
@@ -1062,16 +1074,18 @@ p {
   right: 30px;
   width: 50px;
   height: 50px;
-  background: var(--gradient-cta);
-  color: var(--color-white);
-  border: none;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: var(--color-forest-dark);
+  border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 50%;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.5rem;
-  box-shadow: var(--shadow-lg);
+  font-size: 1.25rem;
+  box-shadow: var(--shadow-md);
   opacity: 0;
   visibility: hidden;
   transform: translateY(20px);
@@ -1087,7 +1101,8 @@ p {
 
 .back-to-top:hover {
   transform: translateY(-4px);
-  box-shadow: var(--shadow-glow), var(--shadow-lg);
+  box-shadow: var(--shadow-lg);
+  background: rgba(255, 255, 255, 0.95);
 }
 
 .back-to-top:active {
@@ -1449,8 +1464,10 @@ p {
   right: 30px;
   width: 50px;
   height: 50px;
-  background: var(--color-white);
-  border: 2px solid var(--color-gray-light);
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 50%;
   cursor: pointer;
   display: flex;
