@@ -41,7 +41,7 @@
       <img src="assets/img/hero.png" alt="Forest animals gathering peacefully">
     </div>
     <div class="hero-overlay"></div>
-    <div class="hero-content">
+    <div class="hero-content" style="position: relative; z-index: 1;">
       <h1 class="hero-title">
         <span>🐾🤝</span>
         Nature's Hidden Hugs
@@ -126,7 +126,8 @@
       <p>Follow along for new stories every week. Together, we celebrate the quiet heroes and the animals they help.</p>
       <div style="display: flex; gap: var(--space-md); justify-content: center; flex-wrap: wrap;">
         <a href="stories.html" class="btn btn-primary">Watch Stories</a>
-        <a href="shop.html" class="btn btn-primary" style="background: var(--color-white); color: var(--color-forest-dark);">🛍️ Visit the Shop</a>
+        <a href="shop.html" class="btn btn-primary"
+          style="background: var(--color-white); color: var(--color-forest-dark);">🛍️ Visit the Shop</a>
         <a href="https://www.facebook.com/profile.php?id=61585668806088" target="_blank" rel="noopener"
           class="btn btn-secondary" style="border-color: white; color: white;">Follow on Facebook</a>
       </div>
@@ -138,7 +139,8 @@
     <div class="container">
       <h2>🌿 Get New Stories First</h2>
       <p>Join the community and receive our latest heartwarming videos before anyone else.</p>
-      <div class="newsletter-benefits" style="display: flex; gap: var(--space-xl); justify-content: center; margin-bottom: var(--space-lg); flex-wrap: wrap;">
+      <div class="newsletter-benefits"
+        style="display: flex; gap: var(--space-xl); justify-content: center; margin-bottom: var(--space-lg); flex-wrap: wrap;">
         <span style="color: var(--color-white); font-size: var(--font-size-sm);">✨ Early access to new videos</span>
         <span style="color: var(--color-white); font-size: var(--font-size-sm);">🎁 Exclusive shop discounts</span>
         <span style="color: var(--color-white); font-size: var(--font-size-sm);">📖 Behind-the-scenes stories</span>
@@ -186,6 +188,7 @@
   </footer>
 
   <script src="js/main.js"></script>
+  <script src="js/hero-animation.js"></script>
   <script>
     // Load featured stories on home page — use main stories array for a full grid
     document.addEventListener('DOMContentLoaded', function () {
